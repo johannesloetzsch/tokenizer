@@ -21,7 +21,7 @@
             numpy matplotlib
             pandas plotly ipywidgets notebook
             scipy keras #tensorflow dm-tree
-            torch numpy transformers datasets torchvision tiktoken wandb tqdm
+            torch numpy transformers datasets torchvision tiktoken wandb tqdm torchinfo
             scikit-image urllib3 scikit-learn
             opencv4
             sympy
