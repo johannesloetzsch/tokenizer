@@ -21,11 +21,14 @@
             numpy matplotlib
             pandas plotly ipywidgets notebook
             scipy keras #tensorflow dm-tree
-            torch numpy transformers datasets torchvision tiktoken wandb tqdm torchinfo
+            torch transformers torchvision tiktoken
+            torchinfo wandb tqdm
+            datasets kaggle
             scikit-image urllib3 scikit-learn
             opencv4
             sympy
-            joblib marisa-trie #wikipedia2vec
+            joblib marisa-trie
+            rdflib
           ]))
         ];
         shellHook = ''
@@ -53,7 +56,10 @@
           shellHook = ''
             mkdir example
             wget https://www.gutenberg.org/cache/epub/2229/pg2229.txt -O example/corpus.txt
-            #lynx --display_charset=utf-8 --dump https://nixos.org/manual/nixos/stable/index.html#ch-installation > example/corpus.txt
+            #https://github.com/google-research-datasets/natural-questions
+            #https://huggingface.co/datasets/wiki_qa
+            #https://openwebtext2.readthedocs.io/en/latest/
+            #https://info.arxiv.org/help/bulk_data.html
           '';
         };
       };
