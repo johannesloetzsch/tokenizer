@@ -12,6 +12,9 @@
     let
       pkgs = import nixpkgs {
         inherit system;
+        config = {
+          allowUnfree = true;
+        };
       };
     in rec {
       devShell = pkgs.mkShell {
@@ -21,7 +24,7 @@
             numpy matplotlib
             pandas plotly ipywidgets notebook
             scipy keras #tensorflow dm-tree
-            torch transformers torchvision tiktoken
+            torch transformers accelerate bitsandbytes torchvision evaluate jiwer tiktoken
             torchinfo wandb tqdm
             datasets kaggle
             scikit-image urllib3 scikit-learn
@@ -29,6 +32,7 @@
             sympy
             joblib marisa-trie
             rdflib
+            pytesseract
           ]))
         ];
         shellHook = ''
