@@ -9,4 +9,4 @@ import kaggle
 
 dataset_path = "../data/"
 dataset_name = "kenshoresearch/kensho-derived-wikimedia-data"
-d = kaggle.api.dataset_download_cli(dataset_name, path=dataset_path, unzip=False)
+d = kaggle.api.dataset_download_cli(dataset_name, path=dataset_path, unzip=True)

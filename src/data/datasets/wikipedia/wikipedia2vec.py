@@ -45,12 +45,19 @@ class Dictionary:
     def get_word(self, idx: int):
         return self._word_dict_rev[idx]
 
+    def get_words_by_prefix(self, word_prefix: str):
+        return self._word_dict.iterkeys(word_prefix)
+
     def get_vector(self, word: str):
-        index = self._word_dict[word]
-        return self._vectors[index]
+        index = self._word_dict.get(word)
+        if index:
+            return self._vectors[index]
 
     def __getitem__(self, word: str):
         return self.get_vector(word)
+
+    def __keys__(self):
+        return self._word_dict.keys()
 
     def most_similar(self, vec: np.ndarray, k=10):
         """TODO: support Euclidean and Cosine Distance"""
@@ -59,13 +66,14 @@ class Dictionary:
         return [(self._word_dict_rev.get(i), dst[i]) for i in indexes[:k]]
 
 
-def example_dict():
-    if "d" in vars():
-        return d
-    file = "/home/j03/Downloads/dewiki_20180420_100d.pkl.bz2"
-    print("Load", file, "…")
+def dict_by_lang(lang="de"):
+    file_by_lang = { "de": "../data/wiki2vec/dewiki_20180420_100d.pkl.bz2",
+                     "en": "../data/wiki2vec/enwiki_20180420_win10_100d.pkl.bz2" }
+
+    file = file_by_lang[lang]
+    print("Load {} ({})…".format(lang, file))
     return Dictionary.load(file)
-    
+
 if __name__ == '__main__':
-    d = example_dict()
-    print(d.most_similar(d["bruder"] + d["frau"] - d["mann"], 1))
+    de = dict_by_lang()
+    print(de.most_similar(de["bruder"] + de["frau"] - de["mann"], 1))
